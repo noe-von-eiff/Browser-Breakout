@@ -1,0 +1,25 @@
+{
+  "name": "browser-breakout",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "play breakout on any webpage",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noe-von-eiff/Browser-Breakout.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/noe-von-eiff/Browser-Breakout/issues"
+  },
+  "homepage": "https://github.com/noe-von-eiff/Browser-Breakout#readme",
+  "dependencies": {
+    "archiver": "^5.3.1",
+    "glob": "^9.3.4",
+    "minify": "^9.2.0"
+  }
+}

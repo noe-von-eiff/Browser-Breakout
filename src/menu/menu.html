@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="pickr/nano.min.css"/>
+    <script src="pickr/pickr.min.js"></script>
+    <script type="module" src="menu.js"></script>
+    <script type="module" src="mini-breakout.js"></script>
+    <link rel="stylesheet" href="menu.css">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div id="menu">
+        <svg id="settings-button" width="32" height="32" viewBox="0 0 32 32" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M18.9784 2.34188C18.2204 -0.780625 13.7796 -0.780625 13.0216 2.34188C12.5319 4.35898 10.2209 5.31622 8.44832 4.23618C5.70436 2.56424 2.56424 5.70436 4.23618 8.44832C5.31622 10.2209 4.35898 12.5319 2.34188 13.0216C-0.780625 13.7796 -0.780625 18.2204 2.34188 18.9784C4.35898 19.4682 5.31622 21.7792 4.23618 23.5516C2.56424 26.2956 5.70436 29.4358 8.44834 27.7638C10.2209 26.6838 12.5319 27.641 13.0216 29.6582C13.7796 32.7806 18.2204 32.7806 18.9784 29.6582C19.4682 27.641 21.7792 26.6838 23.5516 27.7638C26.2956 29.4358 29.4358 26.2956 27.7638 23.5516C26.6838 21.7792 27.641 19.4682 29.6582 18.9784C32.7806 18.2204 32.7806 13.7796 29.6582 13.0216C27.641 12.5319 26.6838 10.2209 27.7638 8.44832C29.4358 5.70436 26.2956 2.56424 23.5516 4.23618C21.7792 5.31622 19.4682 4.35898 18.9784 2.34188V2.34188ZM16 22C19.3138 22 22 19.3138 22 16C22 12.6863 19.3138 10 16 10C12.6863 10 10 12.6863 10 16C10 19.3138 12.6863 22 16 22Z"
+                fill="#2A2A2A" />
+        </svg>
+        <canvas id="mini-breakout" width="140" height="80"></canvas>
+        <button id="play" class="unselectable">PLAY</button>
+        <a id="contribute" class="unselectable" href="#">contribute</a>
+    </div>
+
+    <div id="settings">
+        <svg id="back-button" width="40" height="35" viewBox="0 0 40 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M19.1384 34.0376C18.1686 35.0073 16.5963 35.0073 15.6266 34.0376L0.727308 19.1384C-0.242436 18.1687 -0.242436 16.5963 0.727308 15.6266L15.6266 0.727308C16.5963 -0.242436 18.1686 -0.242436 19.1384 0.727308C20.1081 1.69708 20.1081 3.26935 19.1384 4.23911L8.4782 14.8993H37.2482C38.6197 14.8993 39.7314 16.0111 39.7314 17.3825C39.7314 18.754 38.6197 19.8657 37.2482 19.8657H8.4782L19.1384 30.5259C20.1081 31.4956 20.1081 33.0679 19.1384 34.0376Z"
+                fill="#2A2A2A" />
+        </svg>
+        <div class="setting-wrapper unselectable">
+            Amount of lives: <span id="lives-value"></span>
+            <div class="slider-wrapper">
+                <input type="range" min="1" max="21" class="slider" id="lives-range">
+            </div>
+        </div>
+        <div class="setting-wrapper color-setting-wrapper unselectable">
+            <b>Colors</b>
+            <div class="colors-wrapper">
+                <div class="color-picker">
+                    Ball
+                    <div id="ball-color"></div>
+                </div>
+                <div class="color-picker">
+                    Paddle
+                    <div id="paddle-color"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
