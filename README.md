@@ -8,7 +8,7 @@ Browser Breakout incorporates the color picker from [Pickr Version 1.8.2](https:
 
 ## Download Links
 - [Chrome download](https://chromewebstore.google.com/detail/browser-breakout/oefbdmhkfnipjlgkemmcfhdijpdmjcmp)
-- [Firefox download]()
+<!-- - [Firefox download]() -->
 
 ## Build
 To build the extension means to minify the available code and to put everything needed for the upload in a zip-file.

@@ -6,21 +6,13 @@ import * as fs from 'fs';
 
 // Could be a cool npm package idea ngl
 
-const manifest = JSON.parse(await fs.promises.readFile("manifest.json"));
-const firefoxExtra = {
-    "browser_specific_settings": {
-        "gecko": {
-            "id": "browser@breakout.com",
-            "strict_min_version": "42.0"
-        }
-    }
-};
+const version = JSON.parse(await fs.promises.readFile("manifest-chrome.json")).version;
 
-await build("Chrome", `build/chrome-browser-breakout-${manifest.version}.zip`);
-await build("Firefox", `build/firefox-browser-breakout-${manifest.version}.zip`, firefoxExtra);
+await build("chrome", `build/chrome-browser-breakout-${version}.zip`);
+await build("firefox", `build/firefox-browser-breakout-${version}.zip`);
 
 
-async function build(platform, outPath, manifestExtra = {}) {
+async function build(platform, outPath) {
     console.log(`Starting ${platform} Zip creation`);
     // Delete existing zip
     fs.unlink(outPath, (err) => {
@@ -43,14 +35,8 @@ async function build(platform, outPath, manifestExtra = {}) {
         console.error(error);
     }
 
-    // Create the final manifest JSON
-    let buildManifest = manifest;
-    if (Object.keys(manifestExtra).length !== 0) {
-        buildManifest = { ...manifest, ...manifestExtra };
-    }
-
     // Add manifest.json and assets
-    archive.append(JSON.stringify(buildManifest), { name: "manifest.json" });
+    archive.append(fs.createReadStream(`manifest-${platform}.json`), { name: "manifest.json"});
     archive.file("assets/icon16.png");
     archive.file("assets/icon48.png");
     archive.file("assets/icon128.png");

@@ -4,7 +4,7 @@ class DialogHandler {
         document.body.insertAdjacentHTML("beforeend", dialogHTML);
 
         const dialogStyleSheet = document.createElement("style");
-        dialogStyleSheet.innerHTML = dialogStyle;
+        dialogStyleSheet.textContent = dialogStyle;
         document.head.appendChild(dialogStyleSheet);
 
         this.dialog = document.getElementById("browser-breakout-dialog");
@@ -24,12 +24,12 @@ class DialogHandler {
     }
 
     showWin() {
-        this.dialogText.innerHTML = "You won! Play again?";
+        this.dialogText.textContent = "You won! Play again?";
         this.dialog.showModal();
     }
 
     showLose() {
-        this.dialogText.innerHTML = "You lost! Play again?";
+        this.dialogText.textContent = "You lost! Play again?";
         this.dialog.showModal();
     }
 

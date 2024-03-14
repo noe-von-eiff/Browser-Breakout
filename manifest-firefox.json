@@ -1,0 +1,42 @@
+{
+    "manifest_version": 2,
+    "name": "Browser Breakout",
+    "author": "Noé Von-Eiff",
+    "description": "Play Breakout on any webpage!",
+    "version": "1.0.0",
+    "icons": {
+        "16": "assets/icon16.png",
+        "48": "assets/icon48.png",
+        "128": "assets/icon128.png"
+    },
+    "browser_action": {
+        "default_popup": "src/menu/menu.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "src/content/constants.js",
+                "src/content/utils.js",
+                "src/content/InputHandler.js",
+                "src/content/ExplosionHandler.js",
+                "src/content/DialogHandler.js",
+                "src/content/Paddle.js",
+                "src/content/Ball.js",
+                "src/content/Game.js",
+                "src/content/content.js"
+            ]
+        }
+    ],
+    "permissions": [
+        "storage"
+    ],
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "browser-breakout@dev.com",
+            "strict_min_version": "60.0"
+        }
+    }
+}

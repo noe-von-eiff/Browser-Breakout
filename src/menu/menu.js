@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
             chrome.tabs.sendMessage(tabs[0].id, { key: 'state' },
                 (isRunning) => {
                     if (isRunning) {
-                        playElement.innerHTML = "STOP";
+                        playElement.textContent = "STOP";
                     } else {
-                        playElement.innerHTML = "PLAY";
+                        playElement.textContent = "PLAY";
                     }
                 });
         }
@@ -65,9 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
     chrome.storage.local.get(null, (data) => {
         livesRangeElement.value = data.livesAmount || 3;
         if (livesRangeElement.value == 21) {
-            livesTextElement.innerHTML = "unlimited";
+            livesTextElement.textContent = "unlimited";
         } else {
-            livesTextElement.innerHTML = livesRangeElement.value;
+            livesTextElement.textContent = livesRangeElement.value;
         }
     });
 
@@ -88,9 +88,9 @@ document.addEventListener('DOMContentLoaded', () => {
         chrome.storage.local.set({ livesAmount: livesRangeElement.value });
         // Update the lives amount in display
         if (livesRangeElement.value == 21) {
-            livesTextElement.innerHTML = "unlimited";
+            livesTextElement.textContent = "unlimited";
         } else {
-            livesTextElement.innerHTML = livesRangeElement.value;
+            livesTextElement.textContent = livesRangeElement.value;
         }
     });
 
