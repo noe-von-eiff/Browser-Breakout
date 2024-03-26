@@ -4,7 +4,9 @@ import { glob } from 'glob';
 import archiver from 'archiver';
 import * as fs from 'fs';
 
-// Could be a cool npm package idea ngl
+if (!fs.existsSync("build/")) {
+    fs.mkdirSync("build/");
+}
 
 const version = JSON.parse(await fs.promises.readFile("manifest-chrome.json")).version;
 
@@ -36,7 +38,7 @@ async function build(platform, outPath) {
     }
 
     // Add manifest.json and assets
-    archive.append(fs.createReadStream(`manifest-${platform}.json`), { name: "manifest.json"});
+    archive.append(fs.createReadStream(`manifest-${platform}.json`), { name: "manifest.json" });
     archive.file("assets/icon16.png");
     archive.file("assets/icon48.png");
     archive.file("assets/icon128.png");
