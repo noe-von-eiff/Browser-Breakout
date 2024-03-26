@@ -10,8 +10,8 @@ class InputHandler {
 
     enableKeyInput(enable) {
         if (enable) {
-            document.addEventListener("keydown", this.handleKeyDown);
-            document.addEventListener("keyup", this.handleKeyUp);
+            document.addEventListener("keydown", this.handleKeyDown, true);
+            document.addEventListener("keyup", this.handleKeyUp, true);
         } else {
             document.removeEventListener("keydown", this.handleKeyDown);
             document.removeEventListener("keyup", this.handleKeyUp);
