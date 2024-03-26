@@ -1,13 +1,13 @@
 class Paddle {
     constructor() {
-        this.color = '#000000'; // Default is black
+        this.color = defaultPaddleColor;
         this.initialX;
         this.initialY;
         this.width;
         this.height;
         this.x;
         this.y;
-        this.speed; // Paddle speed in px per millisecond - depends on window width
+        this.speed = paddleIniSpeed; // Paddle speed in px per millisecond
     }
 
     init(screenWidth, screenHeight, RX, BY) {
@@ -18,7 +18,6 @@ class Paddle {
         this.initialY = BY - this.height - 5;
         this.x = this.initialX;
         this.y = this.initialY;
-        this.speed = 0.75 * (screenWidth / referenceWidth);
     }
 
     reset() {

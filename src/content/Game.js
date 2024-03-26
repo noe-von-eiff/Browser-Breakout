@@ -23,7 +23,7 @@ class Game {
         this.paddle = new Paddle();
         this.paddle.init(this.W, this.H, this.RX, this.BY);
         this.ball = new Ball();
-        this.ball.init(this.W, this.H, this.paddle.width, this.paddle.x, this.paddle.y);
+        this.ball.init(this.paddle.width, this.paddle.x, this.paddle.y);
         this.inputHandler = new InputHandler();
         this.explosionHandler = new ExplosionHandler(this.ctx);
         this.dialogHandler = new DialogHandler(
@@ -67,13 +67,13 @@ class Game {
             // Initial ball launch
             if (this.inputHandler.right()) {
                 // Launch right
-                this.ball.dx = this.ball.initialDxDy;
-                this.ball.dy = -this.ball.initialDxDy;
+                this.ball.dx = ballIniDxDy;
+                this.ball.dy = -ballIniDxDy;
                 this.isBallAirborn = true;
             } else if (this.inputHandler.left()) {
                 // Launch left
-                this.ball.dx = -this.ball.initialDxDy;
-                this.ball.dy = -this.ball.initialDxDy;
+                this.ball.dx = -ballIniDxDy;
+                this.ball.dy = -ballIniDxDy;
                 this.isBallAirborn = true;
             }
             this.isRunning = true;
@@ -123,7 +123,7 @@ class Game {
 
         // Compute new sizes
         this.paddle.init(this.W, this.H, this.RX, this.BY);
-        this.ball.init(this.W, this.H, this.paddle.width, this.paddle.x, this.paddle.y);
+        this.ball.init(this.paddle.width, this.paddle.x, this.paddle.y);
         this.resetLevel();
     }
 
@@ -136,7 +136,7 @@ class Game {
             .map(element => {
                 const bcRect = getAbsRect(element);
                 const isViableBrick =
-                    bcRect.y + bcRect.height + this.paddle.height + this.ball.radius * 2 + minDistanceBallBrick < this.BY &&
+                    bcRect.y + bcRect.height + this.paddle.height + this.ball.radius * 2 + minDistPaddleBrick < this.BY &&
                     bcRect.y > this.TY &&
                     bcRect.width > minBrickWidth && bcRect.height > minBrickHeight &&
                     elementIsVisible(element);

@@ -1,9 +1,8 @@
 class Ball {
     constructor() {
-        this.color = '#FF0000'; // Default is red
+        this.color = defaultBallColor;
         this.initialX;
         this.initialY;
-        this.initialDxDy; // Initial dx and dy of ball in px per millisecond - depends on window diagonal
         this.radius;
         this.x;
         this.y;
@@ -11,7 +10,7 @@ class Ball {
         this.dy;
     }
 
-    init(screenWidth, screenHeight, paddleWidth, paddleX, paddleY) {
+    init(paddleWidth, paddleX, paddleY) {
         // Initialize ball values using screen and paddle dimensions and coordinates
         this.radius = Math.min(paddleWidth / 10, maxBallRadius);
         this.initialX = paddleX + paddleWidth / 2;
@@ -20,10 +19,6 @@ class Ball {
         this.y = this.initialY;
         this.dx = 0;
         this.dy = 0;
-
-        // Ball speed settings
-        const windowDiagonal = Math.sqrt(screenWidth ** 2 + screenHeight ** 2);
-        this.initialDxDy = Math.min(0.15 * (windowDiagonal / referenceDiagonal), maxBallInitialDxDy);
     }
 
     reset() {

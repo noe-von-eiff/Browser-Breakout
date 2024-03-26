@@ -18,5 +18,5 @@ To build the extension, just run `npm run build`.
 The finished Zips can then be found under the "build" directory.
 
 ## ToDos
-- [ ] I'd like to rework the way the initial ball and paddle speed are calculated, as I don't think that the current logic is fair to all users (different screen sizes etc.).
+- [X] I'd like to rework the way the initial ball and paddle speed are calculated, as I don't think that the current logic is fair to all users (different screen sizes etc.).
 - [ ] [On this website](https://www.feed-the-beast.com/modpacks/99-ftb-inferno?tab=mods), scroll to the very bottom of the page and start the game. The game will be very laggy for some reason. Tested on Chrome. It would be interesting to know why this is happening.

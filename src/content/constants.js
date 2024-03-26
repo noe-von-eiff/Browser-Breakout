@@ -15,16 +15,14 @@ const defaultPaddleColor = '#000000';
 const defaultLivesAmount = 3;
 
 // Game constants
-const referenceWidth = 1280;
-const referenceDiagonal = 1500;
-
 const maxPaddleHeight = 30;
+const paddleIniSpeed = 0.5;
 const maxBallRadius = 16;
-const maxBallInitialDxDy = 0.15;
+const ballIniDxDy = 0.2;
 
 const speedMultiplier = 1.05;
 
-const minDistanceBallBrick = 100;
+const minDistPaddleBrick = 100;
 const minBrickWidth = 12;
 const minBrickHeight = 12;
 
