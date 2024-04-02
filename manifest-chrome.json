@@ -3,7 +3,7 @@
     "name": "Browser Breakout",
     "author": "Noé Von-Eiff",
     "description": "Play Breakout on any webpage!",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "icons": {
         "16": "assets/icon16.png",
         "48": "assets/icon48.png",
