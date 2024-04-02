@@ -2,43 +2,32 @@ class InputHandler {
     constructor() {
         this.pressingLeft = false;
         this.pressingRight = false;
+        this.isEnabled = false;
 
-        // Bind event handler functions to the current instance
-        this.handleKeyDown = this.handleKeyDown.bind(this);
-        this.handleKeyUp = this.handleKeyUp.bind(this);
+        const handleKeyTemplate = (event, isPress) => {
+            if (!this.isEnabled) {
+                return;
+            }
+            if (event.key === "ArrowLeft" || event.key === "a") {
+                this.pressingLeft = isPress;
+                // Prevent potential key events from being sent to the website (eg: moving paddle on youtube could move the video forward)
+                event.stopImmediatePropagation();
+            }
+            if (event.key === "ArrowRight" || event.key === "d") {
+                this.pressingRight = isPress;
+                event.stopImmediatePropagation();
+            }
+        }
+
+        this.handleKeyDown = (event) => handleKeyTemplate(event, true);
+        this.handleKeyUp = (event) => handleKeyTemplate(event, false);
+
+        document.addEventListener("keydown", this.handleKeyDown, true);
+        document.addEventListener("keyup", this.handleKeyUp, true);
     }
 
-    enableKeyInput(enable) {
-        if (enable) {
-            document.addEventListener("keydown", this.handleKeyDown, true);
-            document.addEventListener("keyup", this.handleKeyUp, true);
-        } else {
-            document.removeEventListener("keydown", this.handleKeyDown);
-            document.removeEventListener("keyup", this.handleKeyUp);
-        }
-    }
-    
-    handleKeyDown(event) {
-        if (event.key === "ArrowLeft" || event.key === "a") {
-            this.pressingLeft = true;
-            // Prevent potential key events from being sent to the website (eg: moving paddle on youtube could move the video forward)
-            event.stopImmediatePropagation();
-        }
-        if (event.key === "ArrowRight" || event.key === "d") {
-            this.pressingRight = true;
-            event.stopImmediatePropagation();
-        }
-    }
-    
-    handleKeyUp(event) {
-        if (event.key === "ArrowLeft" || event.key === "a") {
-            this.pressingLeft = false;
-            event.stopImmediatePropagation();
-        }
-        if (event.key === "ArrowRight" || event.key === "d") {
-            this.pressingRight = false;
-            event.stopImmediatePropagation();
-        }
+    enable(enabled) {
+        this.isEnabled = enabled;
     }
 
     left() {
@@ -52,5 +41,10 @@ class InputHandler {
     reset() {
         this.pressingLeft = false;
         this.pressingRight = false;
+    }
+
+    kill() {
+        document.removeEventListener("keydown", this.handleKeyDown, true);
+        document.removeEventListener("keyup", this.handleKeyUp, true);
     }
 }

@@ -29,7 +29,7 @@ class Game {
         this.dialogHandler = new DialogHandler(
             () => { // If yes is pressed
                 this.resetLevel();
-                this.inputHandler.enableKeyInput(true); // Re-enable key input after closing dialog
+                this.inputHandler.enable(true); // Re-enable key input after closing dialog
             },
             () => { // If no is pressed
                 this.killGame();
@@ -50,7 +50,7 @@ class Game {
         });
 
         // Initialize input variables
-        this.inputHandler.enableKeyInput(true);
+        this.inputHandler.enable(true);
 
         // Resize handler
         window.addEventListener("resize", this.handleResize.bind(this));
@@ -101,7 +101,7 @@ class Game {
         this.dialogHandler.remove();
 
         // Remove event listeners
-        this.inputHandler.enableKeyInput(false);
+        this.inputHandler.kill();
         window.removeEventListener("resize", this.handleResize);
     }
 
@@ -333,7 +333,7 @@ class Game {
 
         //// Check win
         if (this.bricks.every((brick) => brick.isDestroyed)) {
-            this.inputHandler.enableKeyInput(false); // Disable input while dialog is open
+            this.inputHandler.enable(false); // Disable input while dialog is open
             this.dialogHandler.showWin();
             this.resetPlayer();
         }
@@ -342,7 +342,7 @@ class Game {
         if (this.ball.y + this.ball.radius > this.BY) {
             this.curLives -= 1;
             if (this.curLives < 1 && !this.hasInfiniteLives) {
-                this.inputHandler.enableKeyInput(false);
+                this.inputHandler.enable(false);
                 this.dialogHandler.showLose();
             }
             this.resetPlayer();
