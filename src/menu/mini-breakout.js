@@ -155,6 +155,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         ball.dy = -0.75;
     }
+
+    // Easter egg
+    const contribute = document.getElementById("contribute");
+    contribute.addEventListener("mouseover", () => {
+        isMouseOver = true;
+    });
+    contribute.addEventListener("mouseleave", () => {
+        isMouseOver = false;
+    });
+    contribute.addEventListener("wheel", (event) => {
+        if (isMouseOver) {
+            if (event.deltaY > 0) {
+                paddle.x -= paddle.speed * 5;
+            } else {
+                paddle.x += paddle.speed * 5;
+            }
+        }
+    });
 });
 
 function isCircleRectColliding(circleX, circleY, circleR, rectX, rectY, rectW, rectH) {
