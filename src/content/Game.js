@@ -17,8 +17,8 @@ class Game {
         this.canvas.width = this.RX;
         this.canvas.height = this.BY;
         this.canvas.style = "position:absolute;top:0;left:0;z-index:2147483647;";
-        document.documentElement .style.cssText += "overflow:hidden !important;";
-        document.documentElement .appendChild(this.canvas);
+        document.documentElement.style.cssText += "overflow:hidden !important;";
+        document.documentElement.appendChild(this.canvas);
 
         this.paddle = new Paddle();
         this.paddle.init(this.W, this.H, this.RX, this.BY);
@@ -94,7 +94,7 @@ class Game {
             brick.domElement.style.visibility = "visible";
         }
 
-        document.body.style.cssText -= "overflow:hidden !important;";
+        document.documentElement.style.cssText -= "overflow:hidden !important;";
         this.canvas.remove();
 
         // Remove dialog
